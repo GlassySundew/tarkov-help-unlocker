@@ -6,7 +6,7 @@
 			"type": "block"
 		},
 		"condition": {
-			"urlFilter": "https://api.tarkov.help/script.js",
+			"urlFilter": "https://tarkov.help/static/js/main.*.js",
 			"resourceTypes": [
 				"script"
 			]

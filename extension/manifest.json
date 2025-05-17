@@ -9,7 +9,14 @@
 		"https://glassysundew.github.io/*"
 	],
 	"permissions": [
-		"declarativeNetRequest"
+		"webRequest",
+		// "webRequestBlocking",
+		"storage",
+		"scripting",
+		"declarativeNetRequest",
+		"declarativeNetRequestWithHostAccess",
+		"declarativeNetRequestFeedback",
+		"browsingData"
 	],
 	"content_scripts": [
 		{

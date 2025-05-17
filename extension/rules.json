@@ -1,15 +1,2 @@
 [
-	{
-		"id": 1,
-		"priority": 1,
-		"action": {
-			"type": "block"
-		},
-		"condition": {
-			"urlFilter": "https://tarkov.help/static/js/main.*.js",
-			"resourceTypes": [
-				"script"
-			]
-		}
-	}
 ]

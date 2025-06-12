@@ -4,25 +4,27 @@
 	"version": "1.1.1",
 	"description": "Разблокировывает карты tarkov.help, закрытые за премиумом",
 	"host_permissions": [
-		"https://tarkov.help/*",
+		"https://tarkov.help/ru/map/*",
 		"https://api.tarkov.help/*",
 		"https://glassysundew.github.io/*"
 	],
 	"permissions": [
-		"webRequest",
-		// "webRequestBlocking",
 		"storage",
 		"scripting",
 		"declarativeNetRequest",
 		"declarativeNetRequestWithHostAccess",
 		"declarativeNetRequestFeedback",
-		"browsingData"
+		"browsingData",
+		"webNavigation"
 	],
 	"content_scripts": [
 		{
 			"matches": [
-				"https://tarkov.help/ru/map/*",
+				"https://tarkov.help/*/map/*",
 				"https://api.tarkov.help/*"
+			],
+			"exclude_matches": [
+				"https://tarkov.help/ru"
 			],
 			"js": [
 				"content.js"
@@ -39,18 +41,36 @@
 			"matches": [
 				"<all_urls>"
 			]
+		},
+		{
+			"resources": [
+				"webextension-polyfill.js"
+			],
+			"matches": [
+				"<all_urls>"
+			]
 		}
 	],
-	"declarative_net_request": {
-		"rule_resources": [
-			{
-				"id": "block_script_rule",
-				"enabled": true,
-				"path": "rules.json"
-			}
-		]
-	},
+	// "declarative_net_request": {
+	// 	"rule_resources": [
+	// 		{
+	// 			"id": "block_script_rule",
+	// 			"enabled": true,
+	// 			"path": "rules.json"
+	// 		}
+	// 	]
+	// },
 	"background": {
-		"service_worker": "background.js"
+		// "scripts": [
+		// 	"background.js"
+		// ],
+		"service_worker": "background.js",
+		"type": "module"
+	},
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "tarkov-help-unlocker@glassy.sundew",
+			"strict_min_version": "109.0"
+		}
 	}
 }
